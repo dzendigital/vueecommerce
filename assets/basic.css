@@ -1,0 +1,439 @@
+/* >>> normalize */
+body,
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color: rgba(0,0,0, .95);
+	cursor: pointer;
+}
+img{
+	max-width: 100%;
+}
+button{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	background-color: unset;
+	border: unset;
+	cursor: pointer;
+}
+/* <<< normalize */
+/* >>> прокрутка */
+::-webkit-scrollbar { /* chrome based */
+    width: 0px;  /* ширина scrollbar'a */
+    background: transparent;  /* опционально */
+}
+
+html *,
+html {
+    -ms-overflow-style: none;  /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+/* <<< прокрутка */
+/* >>> basic */
+html *{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+#app{
+	min-height: 100vh;
+	height: max-content;
+	display: grid;
+	grid-template-rows: max-content;
+}
+.outer{
+	padding-top: 40px;
+}
+.outer.header{
+	padding-top: 0;
+}
+.inner{
+	max-width: 1300px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: 0 auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/* <<< basic */
+/* >>> переменные */
+:root{
+	--border-bottom: 1px solid rgba(0,0,0,.4);
+	--main-color: #333;
+	--line-height: 21px;
+	--letter-spacing: .6px;
+}
+/* <<< переменные */
+/* >>> основные классы */
+#app .hidden{
+	display: none;
+}
+#app .category .hidden{
+	display: grid;
+	opacity: 0;
+	height: 0;
+	transition-duration: .4s;
+	z-index: -1;
+	visibility: hidden;
+}
+#app .category .open .hidden{
+	height: auto;
+	opacity: 1;
+	visibility: visible;
+}
+#app .box .category .hidden{
+	display: block;
+	transition-duration: 0s;
+}
+.main_button{
+	padding: 10px 10px;
+	box-sizing: border-box;
+	display: block;
+	max-width: 148px;
+	text-align: center;
+	font-size: 17px;
+	color: #fff;
+	background-color: #333333;
+	font-weight: 400;
+	text-shadow: 0px 0px 1px #fff;
+	letter-spacing: .5px;
+	text-transform: uppercase;
+	height: max-content;
+}
+.marks{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 12px;
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	grid-gap: 10px;
+}
+.marks span{
+	padding: 5px 10px;
+	background-color: rgba(255,255,255,.7);
+	letter-spacing: 0.6px;
+}
+.price .new{
+	font-weight: 500;
+}
+.price .old{
+	color: rgba(0,0,0,0.5);
+	text-decoration: line-through;
+	padding-left: 10px;
+}
+/* <<< основные классы */
+/* >>> анимация header */
+.header{
+	position: sticky;
+	top: 0;
+	z-index: 99;
+}
+.header header{
+	transition: .4s;
+}
+.header.scrolled header{
+	padding: 5px 0;
+	transition: .4s;
+}
+.header button[data-type="nav"]{
+	transition: .4s;
+}
+.header.scrolled button[data-type="nav"]{
+	transition: .4s;
+	width: 20px;
+	height: 20px;
+}
+.header .buttonset{
+	transition: .4s;
+}
+.header.scrolled .buttonset{
+	transition: .4s;
+	font-size: 16px;
+}
+.dim{
+	display: none;
+}
+.dim_content .dim{
+	cursor: pointer;
+	display: block;
+	background: rgba(0,0,0,0.6);
+	position: fixed;
+	top: 0;
+	height: 100%;
+	z-index: 100;
+	width: calc(100% - 330px);
+	right: 0;
+
+}
+/* <<< анимация header */
+/* >>> системные сообщения */
+.system_info{
+	color: rgba(0,0,0,.7);
+	font-size: 14px;
+}
+/* анимирование появление компонента главной страницы */
+.frontPage-enter{
+	opacity: 0;
+}
+.frontPage-enter-to{
+	transition: 0.7s;
+	opacity: 1;
+}
+.frontPageLoader-leave{
+	opacity: 1;
+}
+.frontPageLoader-leave-to{
+	transition: 0.7s;
+	opacity: 0;
+}
+.page_preload{
+    display: grid;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #ddd;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #ddd transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* анимирование перехода между компонентами */
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s linear;
+}
+.component-fade-enter, .component-fade-leave-to{
+  opacity: 0;
+}
+/* анимирование списка товаров в каталоге */
+.list-item {
+  /*display: inline-block;*/
+}
+.list-enter-active{
+
+}
+.list-leave-active {
+	position: absolute !important;
+	width: 300px !important;
+	max-width: 300px !important;
+	top: 0;
+	right: 50%;
+	transform: translateY(-20px); 
+}
+/* адаптив для каталога товаров и анимации */
+@media (max-width: 1300px){
+.list-leave-active,
+.catalog article{
+	width: 300px !important;
+}	
+.catalog section:not(.filter){
+	grid-template-columns: repeat(3, 1fr) !important;
+	justify-items: center;
+}
+}
+@media (max-width: 812px){
+.list-leave-active,
+.catalog article{
+	width: 300px !important;
+}
+.catalog section:not(.filter){
+	grid-template-columns: repeat(2, 1fr) !important;
+	justify-items: center;
+}	
+}
+@media (max-width: 768px){
+.catalog section:not(.filter){
+	grid-template-columns: repeat(2, 1fr) !important;
+	justify-items: center;
+}
+}
+@media (max-width: 480px){
+.list-leave-active,
+.catalog article{
+	width: 170px !important;
+}
+}
+@media (max-width: 375px){
+.list-leave-active,
+.catalog article{
+	width: 280px !important;
+}
+.catalog section:not(.filter){
+	grid-template-columns: repeat(1, 1fr) !important;
+	justify-items: center;
+}
+}
+/* <<< адаптив для каталога товаров и анимации */
+.list-enter-active, .list-leave-active {
+	transition: all 1s;
+}
+.list-enter, .list-leave-to {
+	opacity: 0;
+	transform: translateY(30px);
+}
+.list-move {
+	transition: all 1s;
+}
+/* анимирование появление бокового меню */
+.menuSlide-enter{
+	opacity: 0;
+}
+.menuSlide-enter-to{
+	transition: .5s;
+	opacity: 1;
+}
+.menuSlide-enter > div{
+	transform: translateX(-100%);
+}
+.menuSlide-enter-to > div{
+	transform: translateX(0);
+	transition: .4s;
+}
+.menuSlide-leave{
+	opacity: 1;
+}
+.menuSlide-leave-to{
+	transition: .5s;
+	opacity: 0;
+}
+.menuSlide-leave > div{
+	transform: translateX(0%);
+}
+.menuSlide-leave-to > div{
+	transform: translateX(-100%);
+	transition: .4s;
+}
+/* анимирование появление корзины заказа */
+.basketTransition-enter{
+	opacity: 0;
+}
+.basketTransition-enter-to{
+	opacity: 1;
+	transition: opacity .5s;
+}
+.basketTransition-enter > div{
+	transform: translateX(100%);
+}
+.basketTransition-enter-to > div{
+	transform: translateX(0);
+	transition: .4s;
+}
+.basketTransition-leave{
+	opacity: 1;
+}
+.basketTransition-leave-to{
+	opacity: 0;
+	transition: opacity .5s;
+}
+.basketTransition-leave > div{
+	transform: translateX(0);
+}
+.basketTransition-leave-to > div{
+	transform: translateX(100%);
+	transition: .4s;
+}
+/* анимация списка категорий */
+.category li{
+	transition: .4s;
+	transition-delay: .2s;
+}
+.category:hover li{
+	transition-delay: .2s;
+	opacity: .5;
+	transition: .4s;
+}
+.category:hover li:hover{
+	transition-delay: .2s;
+	opacity: 1;
+	transition: .4s;
+}
+/* анимирование смены карточки товара во внутренней навигации */
+.cartChange-enter{
+	opacity: 0;
+}
+.cartChange-enter-to{
+	opacity: 1;
+	transition: 1.6s;
+}
+.cartChange-leave{
+	opacity: 1;
+	transition: .5s;
+}
+.cartChange-leave-to{
+	transition: .5s;
+	opacity: 0;
+}
+/* ui elements */
+.open_down_arrow{
+	background-image: url('/assets/img/elements/chewron.png');
+    width: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+	transition: .4s;
+}
+li .open_down_arrow{
+	position: absolute;
+	right: -20px;
+	height: 100%;
+	cursor: pointer;
+	transition: .4s;
+	font-size: 14px;
+}
+form .open_down_arrow{
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	cursor: pointer;
+	transition: .4s;
+	height: 37px;
+	width: 37px;
+}
+.box li .open_down_arrow{
+	height: 20px;
+}
+.open .open_down_arrow{
+	transition: .4s;
+	transform: rotate(-180deg);
+}
